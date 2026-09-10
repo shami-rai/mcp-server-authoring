@@ -1,0 +1,14 @@
+{
+  "name": "mcp-server-authoring",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Building a Model Context Protocol server so an agent can use your own data and actions as first-class tools rather than pasted context.",
+  "scripts": {
+    "smoke": "node --env-file-if-exists=.env scripts/smoke.mjs",
+    "fleet": "node scripts/generate-fleet.mjs"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.125.0"
+  }
+}
