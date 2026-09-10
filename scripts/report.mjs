@@ -7,7 +7,7 @@
 
 import { readRuns, spentSoFar } from './spend.mjs';
 
-const ORDER = ['direct', 'mcp', 'mcp-raw', 'mcp-slow', 'mcp-crash', 'mcp-crash-restart'];
+const ORDER = ['direct', 'mcp', 'mcp-raw', 'mcp-slow', 'mcp-crash', 'mcp-crash-explained', 'mcp-crash-restart'];
 const EFFORT = { low: 0, medium: 1, high: 2, null: 3 };
 
 const runs = readRuns();

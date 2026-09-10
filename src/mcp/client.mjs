@@ -63,6 +63,9 @@ export async function connectFleet({
   timeoutMs, // undefined means the SDK default, 60 s
   restart = false,
   restartEnv = {}, // the restarted server gets this instead of env, so a crash fault does not recur
+  // Without restart, what the model reads once the server is gone. Undefined means pass the
+  // SDK's own message through ("MCP error -32000: Connection closed", then "Not connected").
+  lossMessage,
 } = {}) {
   const stats = { spawns: 0, restarts: 0, startupMs: [], closes: 0, stderr: [], transportErrors: [], toolsChangedOnRestart: false };
   let conn;
@@ -110,12 +113,18 @@ export async function connectFleet({
   const call = (name, input) =>
     conn.client.callTool({ name, arguments: input ?? {} }, undefined, timeoutMs ? { timeout: timeoutMs } : undefined);
 
+  const lost = () => ({ content: lossMessage, isError: true, via: 'harness' });
+
   async function execute(name, input) {
-    if (restart && !conn.alive) await respawn();
+    if (!conn.alive) {
+      if (restart) await respawn();
+      else if (lossMessage) return lost();
+    }
     try {
       return toResult(await call(name, input));
     } catch (e) {
-      if (!(restart && isConnectionLoss(e))) return fromThrow(e);
+      if (!isConnectionLoss(e)) return fromThrow(e);
+      if (!restart) return lossMessage ? lost() : fromThrow(e);
       await respawn();
       try {
         return { ...toResult(await call(name, input)), retried: true };

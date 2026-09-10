@@ -32,6 +32,17 @@ export const CONDITIONS = {
   'mcp-slow': { path: 'mcp', variant: 'zod', env: { FLEET_FAULT: 'slow', FLEET_SLOW_MS: '3000' }, timeoutMs: 1500 },
   'mcp-crash': { path: 'mcp', variant: 'zod', env: CRASH },
   'mcp-crash-restart': { path: 'mcp', variant: 'zod', env: CRASH, restart: true },
+  // The same unrecovered crash, but the harness tells the model what the harness knows,
+  // instead of passing the SDK's "Not connected" through. Facts only, no instruction.
+  'mcp-crash-explained': {
+    path: 'mcp',
+    variant: 'zod',
+    env: CRASH,
+    lossMessage:
+      'The fleet tool server has exited and this harness cannot restart it. ' +
+      'Every further call to any fleet tool in this session will fail. ' +
+      'Results returned before the failure are unaffected.',
+  },
 };
 
 const arg = (k, d) => {
