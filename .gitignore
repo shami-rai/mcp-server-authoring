@@ -2,3 +2,8 @@ node_modules/
 .env
 .DS_Store
 dist/
+
+# Raw running notes. Unpolished and candid, the source for the "what surprised me"
+# beat on the site. This repo is public, so the edited version goes on shamirai.ai and
+# the working file stays local.
+NOTES.md
