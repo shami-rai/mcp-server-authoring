@@ -6,9 +6,17 @@
   "description": "Building a Model Context Protocol server so an agent can use your own data and actions as first-class tools rather than pasted context.",
   "scripts": {
     "smoke": "node --env-file-if-exists=.env scripts/smoke.mjs",
-    "fleet": "node scripts/generate-fleet.mjs"
+    "fleet": "node scripts/generate-fleet.mjs",
+    "server": "node src/server/fleet-server.mjs",
+    "server:raw": "node src/server/fleet-server-raw.mjs",
+    "probe": "node --env-file-if-exists=.env scripts/probe.mjs",
+    "experiment": "node --env-file-if-exists=.env scripts/experiment.mjs",
+    "report": "node scripts/report.mjs",
+    "spend": "node scripts/spend.mjs"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.125.0"
+    "@anthropic-ai/sdk": "^0.125.0",
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^4.6.2"
   }
 }
