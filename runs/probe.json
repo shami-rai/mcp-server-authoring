@@ -1,0 +1,806 @@
+{
+  "definitions": {
+    "raw": {
+      "byteIdentical": true,
+      "sameMeaning": true,
+      "wireKeysOfFirstSchema": [
+        "type",
+        "properties"
+      ],
+      "clientKeysOfFirstSchema": [
+        "type",
+        "properties"
+      ],
+      "wireEqualsClientParse": true,
+      "wireEqualsClientParseIgnoringKeyOrder": true,
+      "fieldsDroppedByConverter": [],
+      "diffs": [],
+      "toolsListBytes": 2279
+    },
+    "zod": {
+      "byteIdentical": false,
+      "sameMeaning": false,
+      "wireKeysOfFirstSchema": [
+        "$schema",
+        "type",
+        "properties"
+      ],
+      "clientKeysOfFirstSchema": [
+        "type",
+        "properties",
+        "$schema"
+      ],
+      "wireEqualsClientParse": false,
+      "wireEqualsClientParseIgnoringKeyOrder": true,
+      "fieldsDroppedByConverter": [
+        "execution"
+      ],
+      "diffs": [
+        {
+          "path": "count_devices.input_schema.properties.site",
+          "kind": "key order",
+          "a": [
+            "type",
+            "enum",
+            "description"
+          ],
+          "b": [
+            "description",
+            "type",
+            "enum"
+          ]
+        },
+        {
+          "path": "count_devices.input_schema.properties.firmware",
+          "kind": "key order",
+          "a": [
+            "type",
+            "description"
+          ],
+          "b": [
+            "description",
+            "type"
+          ]
+        },
+        {
+          "path": "count_devices.input_schema.properties.min_hours.minimum",
+          "kind": "added",
+          "b": -9007199254740991
+        },
+        {
+          "path": "count_devices.input_schema.properties.min_hours.maximum",
+          "kind": "added",
+          "b": 9007199254740991
+        },
+        {
+          "path": "count_devices.input_schema.properties.min_hours",
+          "kind": "key order",
+          "a": [
+            "type",
+            "description"
+          ],
+          "b": [
+            "description",
+            "type"
+          ]
+        },
+        {
+          "path": "count_devices.input_schema.properties.max_hours.minimum",
+          "kind": "added",
+          "b": -9007199254740991
+        },
+        {
+          "path": "count_devices.input_schema.properties.max_hours.maximum",
+          "kind": "added",
+          "b": 9007199254740991
+        },
+        {
+          "path": "count_devices.input_schema.properties.max_hours",
+          "kind": "key order",
+          "a": [
+            "type",
+            "description"
+          ],
+          "b": [
+            "description",
+            "type"
+          ]
+        },
+        {
+          "path": "count_devices.input_schema.$schema",
+          "kind": "added",
+          "b": "http://json-schema.org/draft-07/schema#"
+        },
+        {
+          "path": "top_devices.input_schema.properties.limit.minimum",
+          "kind": "added",
+          "b": -9007199254740991
+        },
+        {
+          "path": "top_devices.input_schema.properties.limit.maximum",
+          "kind": "added",
+          "b": 9007199254740991
+        },
+        {
+          "path": "top_devices.input_schema.properties.limit",
+          "kind": "key order",
+          "a": [
+            "type",
+            "description"
+          ],
+          "b": [
+            "description",
+            "type"
+          ]
+        },
+        {
+          "path": "top_devices.input_schema.properties.site",
+          "kind": "key order",
+          "a": [
+            "type",
+            "enum",
+            "description"
+          ],
+          "b": [
+            "description",
+            "type",
+            "enum"
+          ]
+        },
+        {
+          "path": "top_devices.input_schema.properties.firmware",
+          "kind": "key order",
+          "a": [
+            "type",
+            "description"
+          ],
+          "b": [
+            "description",
+            "type"
+          ]
+        },
+        {
+          "path": "top_devices.input_schema.properties.min_hours.minimum",
+          "kind": "added",
+          "b": -9007199254740991
+        },
+        {
+          "path": "top_devices.input_schema.properties.min_hours.maximum",
+          "kind": "added",
+          "b": 9007199254740991
+        },
+        {
+          "path": "top_devices.input_schema.properties.min_hours",
+          "kind": "key order",
+          "a": [
+            "type",
+            "description"
+          ],
+          "b": [
+            "description",
+            "type"
+          ]
+        },
+        {
+          "path": "top_devices.input_schema.properties.max_hours.minimum",
+          "kind": "added",
+          "b": -9007199254740991
+        },
+        {
+          "path": "top_devices.input_schema.properties.max_hours.maximum",
+          "kind": "added",
+          "b": 9007199254740991
+        },
+        {
+          "path": "top_devices.input_schema.properties.max_hours",
+          "kind": "key order",
+          "a": [
+            "type",
+            "description"
+          ],
+          "b": [
+            "description",
+            "type"
+          ]
+        },
+        {
+          "path": "top_devices.input_schema.$schema",
+          "kind": "added",
+          "b": "http://json-schema.org/draft-07/schema#"
+        },
+        {
+          "path": "get_device.input_schema.$schema",
+          "kind": "added",
+          "b": "http://json-schema.org/draft-07/schema#"
+        }
+      ],
+      "toolsListBytes": 2830
+    }
+  },
+  "zodTools": [
+    {
+      "name": "count_devices",
+      "description": "Count the devices matching a set of filters. Returns only a number. Use this to size a group before asking for rows, since listing tools are capped.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "enum": [
+              "InfusaLine 400",
+              "InfusaLine 700",
+              "CardioTrack M5",
+              "Aeris V3",
+              "RenalPure D2"
+            ]
+          },
+          "site": {
+            "description": "Facility code.",
+            "type": "string",
+            "enum": [
+              "BRD",
+              "CHC",
+              "EVN",
+              "LKV",
+              "NGH",
+              "PDM",
+              "STM",
+              "WRC"
+            ]
+          },
+          "firmware": {
+            "description": "Exact firmware version, e.g. 4.0.1.",
+            "type": "string"
+          },
+          "min_hours": {
+            "description": "Inclusive lower bound on operating_hours.",
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "max_hours": {
+            "description": "Exclusive upper bound on operating_hours.",
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          }
+        },
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "top_devices",
+      "description": "The highest devices by a single stored field, subject to filters. Returns at most 10 rows of {device_id, model, <field>}. Only stored fields can be ranked: operating_hours, alerts, risk_score (the vendor failure-risk score, 1 to 99, assigned in advance), downtime_min (unplanned downtime in minutes over the window). Derived quantities such as downtime per operating hour are not available here.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "field": {
+            "type": "string",
+            "enum": [
+              "operating_hours",
+              "alerts",
+              "risk_score",
+              "downtime_min"
+            ],
+            "description": "The field to rank by, highest first."
+          },
+          "limit": {
+            "description": "How many rows to return, 1 to 10. Defaults to 5.",
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "model": {
+            "type": "string",
+            "enum": [
+              "InfusaLine 400",
+              "InfusaLine 700",
+              "CardioTrack M5",
+              "Aeris V3",
+              "RenalPure D2"
+            ]
+          },
+          "site": {
+            "description": "Facility code.",
+            "type": "string",
+            "enum": [
+              "BRD",
+              "CHC",
+              "EVN",
+              "LKV",
+              "NGH",
+              "PDM",
+              "STM",
+              "WRC"
+            ]
+          },
+          "firmware": {
+            "description": "Exact firmware version, e.g. 4.0.1.",
+            "type": "string"
+          },
+          "min_hours": {
+            "description": "Inclusive lower bound on operating_hours.",
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          },
+          "max_hours": {
+            "description": "Exclusive upper bound on operating_hours.",
+            "type": "integer",
+            "minimum": -9007199254740991,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "field"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    },
+    {
+      "name": "get_device",
+      "description": "The full record for one device: model, site, firmware, operating_hours, alerts, risk_score, downtime_min.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "device_id": {
+            "type": "string",
+            "description": "The device id, e.g. IL4-007."
+          }
+        },
+        "required": [
+          "device_id"
+        ],
+        "$schema": "http://json-schema.org/draft-07/schema#"
+      }
+    }
+  ],
+  "tokens": {
+    "noTools": 167,
+    "direct": 1431,
+    "zod": 1633,
+    "directDefs": 1264,
+    "zodDefs": 1466,
+    "zodDefsIncreasePct": 16
+  },
+  "latency": {
+    "direct": {
+      "n": 270,
+      "mean": 0.022,
+      "p50": 0.01,
+      "p95": 0.048,
+      "max": 0.155
+    },
+    "raw": {
+      "n": 270,
+      "mean": 0.09,
+      "p50": 0.086,
+      "p95": 0.126,
+      "max": 0.252
+    },
+    "zod": {
+      "n": 270,
+      "mean": 0.093,
+      "p50": 0.088,
+      "p95": 0.139,
+      "max": 0.266
+    }
+  },
+  "startupMs": {
+    "raw": {
+      "n": 10,
+      "mean": 74.5,
+      "p50": 74,
+      "p95": 77,
+      "max": 77
+    },
+    "zod": {
+      "n": 10,
+      "mean": 78.7,
+      "p50": 77,
+      "p95": 84,
+      "max": 84
+    }
+  },
+  "errors": [
+    {
+      "label": "handler throws (unknown device)",
+      "name": "get_device",
+      "input": {
+        "device_id": "XX9-999"
+      },
+      "direct": {
+        "content": "No device with id \"XX9-999\" in this fleet. Ids look like IL4-007 or AV3-024.",
+        "isError": true
+      },
+      "raw": {
+        "content": "MCP error -32603: No device with id \"XX9-999\" in this fleet. Ids look like IL4-007 or AV3-024.",
+        "isError": true,
+        "via": "throw",
+        "code": -32603
+      },
+      "zod": {
+        "content": "No device with id \"XX9-999\" in this fleet. Ids look like IL4-007 or AV3-024.",
+        "isError": true,
+        "via": "result"
+      }
+    },
+    {
+      "label": "limit as a string",
+      "name": "top_devices",
+      "input": {
+        "field": "alerts",
+        "limit": "5"
+      },
+      "direct": {
+        "content": "limit must be an integer from 1 to 10, got 5.",
+        "isError": true
+      },
+      "raw": {
+        "content": "MCP error -32603: limit must be an integer from 1 to 10, got 5.",
+        "isError": true,
+        "via": "throw",
+        "code": -32603
+      },
+      "zod": {
+        "content": "MCP error -32602: Input validation error: Invalid arguments for tool top_devices: Invalid input: expected number, received string at limit",
+        "isError": true,
+        "via": "result"
+      }
+    },
+    {
+      "label": "limit out of range",
+      "name": "top_devices",
+      "input": {
+        "field": "alerts",
+        "limit": 50
+      },
+      "direct": {
+        "content": "limit must be an integer from 1 to 10, got 50.",
+        "isError": true
+      },
+      "raw": {
+        "content": "MCP error -32603: limit must be an integer from 1 to 10, got 50.",
+        "isError": true,
+        "via": "throw",
+        "code": -32603
+      },
+      "zod": {
+        "content": "limit must be an integer from 1 to 10, got 50.",
+        "isError": true,
+        "via": "result"
+      }
+    },
+    {
+      "label": "required field missing",
+      "name": "top_devices",
+      "input": {
+        "limit": 3
+      },
+      "direct": {
+        "content": "Cannot rank by \"undefined\". Rankable fields are: operating_hours, alerts, risk_score, downtime_min.",
+        "isError": true
+      },
+      "raw": {
+        "content": "MCP error -32603: Cannot rank by \"undefined\". Rankable fields are: operating_hours, alerts, risk_score, downtime_min.",
+        "isError": true,
+        "via": "throw",
+        "code": -32603
+      },
+      "zod": {
+        "content": "MCP error -32602: Input validation error: Invalid arguments for tool top_devices: Invalid option: expected one of \"operating_hours\"|\"alerts\"|\"risk_score\"|\"downtime_min\" at field",
+        "isError": true,
+        "via": "result"
+      }
+    },
+    {
+      "label": "enum violation (wrong case)",
+      "name": "count_devices",
+      "input": {
+        "model": "Aeris v3"
+      },
+      "direct": {
+        "content": "{\"count\":0}",
+        "isError": false
+      },
+      "raw": {
+        "content": "{\"count\":0}",
+        "isError": false,
+        "via": "result"
+      },
+      "zod": {
+        "content": "MCP error -32602: Input validation error: Invalid arguments for tool count_devices: Invalid option: expected one of \"InfusaLine 400\"|\"InfusaLine 700\"|\"CardioTrack M5\"|\"Aeris V3\"|\"RenalPure D2\" at model",
+        "isError": true,
+        "via": "result"
+      }
+    },
+    {
+      "label": "non-integer bound",
+      "name": "count_devices",
+      "input": {
+        "max_hours": 499.5
+      },
+      "direct": {
+        "content": "{\"count\":254}",
+        "isError": false
+      },
+      "raw": {
+        "content": "{\"count\":254}",
+        "isError": false,
+        "via": "result"
+      },
+      "zod": {
+        "content": "MCP error -32602: Input validation error: Invalid arguments for tool count_devices: Invalid input: expected int, received number at max_hours",
+        "isError": true,
+        "via": "result"
+      }
+    },
+    {
+      "label": "unknown field",
+      "name": "count_devices",
+      "input": {
+        "min_operating_hours": 10
+      },
+      "direct": {
+        "content": "{\"count\":400}",
+        "isError": false
+      },
+      "raw": {
+        "content": "{\"count\":400}",
+        "isError": false,
+        "via": "result"
+      },
+      "zod": {
+        "content": "{\"count\":400}",
+        "isError": false,
+        "via": "result"
+      }
+    },
+    {
+      "label": "unknown tool",
+      "name": "rank_by_rate",
+      "input": {},
+      "direct": {
+        "content": "No such tool: rank_by_rate.",
+        "isError": true
+      },
+      "raw": {
+        "content": "MCP error -32603: No such tool: rank_by_rate.",
+        "isError": true,
+        "via": "throw",
+        "code": -32603
+      },
+      "zod": {
+        "content": "MCP error -32602: Tool rank_by_rate not found",
+        "isError": true,
+        "via": "result"
+      }
+    }
+  ],
+  "faults": {
+    "slow, client timeout 1.5 s": {
+      "opts": {
+        "env": {
+          "FLEET_FAULT": "slow",
+          "FLEET_SLOW_MS": "3000"
+        },
+        "timeoutMs": 1500
+      },
+      "results": [
+        {
+          "name": "top_devices",
+          "ms": 1501,
+          "isError": true,
+          "via": "throw",
+          "retried": false,
+          "content": "MCP error -32001: Request timed out"
+        },
+        {
+          "name": "top_devices",
+          "ms": 3,
+          "isError": false,
+          "via": "result",
+          "retried": false,
+          "content": "{\"total_matching\":400,\"returned\":3,\"devices\":[{\"device_id\":\"IL4-140\",\"model\":\"InfusaLine 400\",\"downtime_min\":466},{\"device_id\":\"CT5-003\",\"model\":\"CardioTrack M5\",\"downtime_min\":461},{\"device_id\":\"CT5-"
+        }
+      ],
+      "stats": {
+        "spawns": 1,
+        "restarts": 0,
+        "startupMs": [
+          79
+        ],
+        "closes": 1,
+        "stderr": [
+          "[fleet] zod server ready on stdio, fault=slow",
+          "[fleet] sleeping 3000 ms in top_devices"
+        ],
+        "transportErrors": [],
+        "toolsChangedOnRestart": false
+      }
+    },
+    "crash on call 2, no restart": {
+      "opts": {
+        "env": {
+          "FLEET_FAULT": "crash",
+          "FLEET_CRASH_AT": "2"
+        }
+      },
+      "results": [
+        {
+          "name": "top_devices",
+          "ms": 1,
+          "isError": false,
+          "via": "result",
+          "retried": false,
+          "content": "{\"total_matching\":400,\"returned\":3,\"devices\":[{\"device_id\":\"IL4-140\",\"model\":\"InfusaLine 400\",\"downtime_min\":466},{\"device_id\":\"CT5-003\",\"model\":\"CardioTrack M5\",\"downtime_min\":461},{\"device_id\":\"CT5-"
+        },
+        {
+          "name": "top_devices",
+          "ms": 2,
+          "isError": true,
+          "via": "throw",
+          "retried": false,
+          "content": "MCP error -32000: Connection closed"
+        },
+        {
+          "name": "top_devices",
+          "ms": 0,
+          "isError": true,
+          "via": "throw",
+          "retried": false,
+          "content": "Not connected"
+        }
+      ],
+      "stats": {
+        "spawns": 1,
+        "restarts": 0,
+        "startupMs": [
+          101
+        ],
+        "closes": 1,
+        "stderr": [
+          "[fleet] zod server ready on stdio, fault=crash",
+          "[fleet] crashing on tools/call 2 (top_devices)"
+        ],
+        "transportErrors": [],
+        "toolsChangedOnRestart": false
+      }
+    },
+    "crash on call 2, restart and retry": {
+      "opts": {
+        "env": {
+          "FLEET_FAULT": "crash",
+          "FLEET_CRASH_AT": "2"
+        },
+        "restart": true
+      },
+      "results": [
+        {
+          "name": "top_devices",
+          "ms": 1,
+          "isError": false,
+          "via": "result",
+          "retried": false,
+          "content": "{\"total_matching\":400,\"returned\":3,\"devices\":[{\"device_id\":\"IL4-140\",\"model\":\"InfusaLine 400\",\"downtime_min\":466},{\"device_id\":\"CT5-003\",\"model\":\"CardioTrack M5\",\"downtime_min\":461},{\"device_id\":\"CT5-"
+        },
+        {
+          "name": "top_devices",
+          "ms": 81,
+          "isError": false,
+          "via": "result",
+          "retried": true,
+          "content": "{\"total_matching\":400,\"returned\":3,\"devices\":[{\"device_id\":\"IL4-140\",\"model\":\"InfusaLine 400\",\"downtime_min\":466},{\"device_id\":\"CT5-003\",\"model\":\"CardioTrack M5\",\"downtime_min\":461},{\"device_id\":\"CT5-"
+        },
+        {
+          "name": "top_devices",
+          "ms": 0,
+          "isError": false,
+          "via": "result",
+          "retried": false,
+          "content": "{\"total_matching\":400,\"returned\":3,\"devices\":[{\"device_id\":\"IL4-140\",\"model\":\"InfusaLine 400\",\"downtime_min\":466},{\"device_id\":\"CT5-003\",\"model\":\"CardioTrack M5\",\"downtime_min\":461},{\"device_id\":\"CT5-"
+        }
+      ],
+      "stats": {
+        "spawns": 2,
+        "restarts": 1,
+        "startupMs": [
+          113,
+          78
+        ],
+        "closes": 2,
+        "stderr": [
+          "[fleet] zod server ready on stdio, fault=crash",
+          "[fleet] crashing on tools/call 2 (top_devices)",
+          "[fleet] zod server ready on stdio"
+        ],
+        "transportErrors": [],
+        "toolsChangedOnRestart": false
+      }
+    },
+    "console.log on stdout": {
+      "opts": {
+        "env": {
+          "FLEET_FAULT": "noisy-line"
+        },
+        "timeoutMs": 3000
+      },
+      "results": [
+        {
+          "name": "top_devices",
+          "ms": 1,
+          "isError": false,
+          "via": "result",
+          "retried": false,
+          "content": "{\"total_matching\":400,\"returned\":3,\"devices\":[{\"device_id\":\"IL4-140\",\"model\":\"InfusaLine 400\",\"downtime_min\":466},{\"device_id\":\"CT5-003\",\"model\":\"CardioTrack M5\",\"downtime_min\":461},{\"device_id\":\"CT5-"
+        },
+        {
+          "name": "top_devices",
+          "ms": 0,
+          "isError": false,
+          "via": "result",
+          "retried": false,
+          "content": "{\"total_matching\":400,\"returned\":3,\"devices\":[{\"device_id\":\"IL4-140\",\"model\":\"InfusaLine 400\",\"downtime_min\":466},{\"device_id\":\"CT5-003\",\"model\":\"CardioTrack M5\",\"downtime_min\":461},{\"device_id\":\"CT5-"
+        }
+      ],
+      "stats": {
+        "spawns": 1,
+        "restarts": 0,
+        "startupMs": [
+          94
+        ],
+        "closes": 1,
+        "stderr": [
+          "[fleet] zod server ready on stdio, fault=noisy-line"
+        ],
+        "transportErrors": [
+          "Unexpected token 'd', \"debug: top\"... is not valid JSON",
+          "Unexpected token 'd', \"debug: top\"... is not valid JSON"
+        ],
+        "toolsChangedOnRestart": false
+      }
+    },
+    "stdout.write with no newline": {
+      "opts": {
+        "env": {
+          "FLEET_FAULT": "noisy-raw"
+        },
+        "timeoutMs": 3000
+      },
+      "results": [
+        {
+          "name": "top_devices",
+          "ms": 3002,
+          "isError": true,
+          "via": "throw",
+          "retried": false,
+          "content": "MCP error -32001: Request timed out"
+        },
+        {
+          "name": "top_devices",
+          "ms": 3001,
+          "isError": true,
+          "via": "throw",
+          "retried": false,
+          "content": "MCP error -32001: Request timed out"
+        }
+      ],
+      "stats": {
+        "spawns": 1,
+        "restarts": 0,
+        "startupMs": [
+          93
+        ],
+        "closes": 1,
+        "stderr": [
+          "[fleet] zod server ready on stdio, fault=noisy-raw"
+        ],
+        "transportErrors": [
+          "Unexpected token 'd', \"debug: top\"... is not valid JSON",
+          "Unexpected token 'd', \"debug: top\"... is not valid JSON"
+        ],
+        "toolsChangedOnRestart": false
+      }
+    }
+  }
+}
