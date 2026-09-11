@@ -26,6 +26,7 @@ export const ANSWER = {
   downtime_per_100h: 89.5,
   risk_score: 57,
   highest_risk_same_model: { device_id: 'AV3-024', risk_score: 85, downtime_per_100h: 10.9 },
-  // Rank the whole pool once by raw downtime and stop, and you land here. 16th by rate.
+  // Rank the whole pool once by raw downtime and stop, and you land here. It is 2nd by
+  // downtime per operating hour, which is what makes it a convincing wrong answer.
   shortcut_wrong_answer: 'IL7-032',
 };
