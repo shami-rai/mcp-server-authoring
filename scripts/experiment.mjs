@@ -34,6 +34,9 @@ export const CONDITIONS = {
   'mcp-crash-restart': { path: 'mcp', variant: 'zod', env: CRASH, restart: true },
   // The same unrecovered crash, but the harness tells the model what the harness knows,
   // instead of passing the SDK's "Not connected" through. Facts only, no instruction.
+  // NOT RUN. The first two attempts were launched before lossMessage was wired through to
+  // connectFleet, so they were really mcp-crash runs and are recorded as such; the API credit
+  // ran out before the condition could be run properly.
   'mcp-crash-explained': {
     path: 'mcp',
     variant: 'zod',
@@ -72,7 +75,13 @@ for (let i = 0, apiRetries = 0; i < n; ) {
   let execute = localExecutor(runTool);
   let fleet = null;
   if (c.path === 'mcp') {
-    fleet = await connectFleet({ variant: c.variant, env: c.env, timeoutMs: c.timeoutMs, restart: c.restart });
+    fleet = await connectFleet({
+      variant: c.variant,
+      env: c.env,
+      timeoutMs: c.timeoutMs,
+      restart: c.restart,
+      lossMessage: c.lossMessage,
+    });
     tools = fleet.tools;
     // Keep what the rig's trace does not: whether a failure came back as a tool
     // result or as a thrown protocol error, and whether the call was retried.
